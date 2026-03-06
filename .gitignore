@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pth
+.claude/
+checkpoints/
+*.egg-info/
+.env
