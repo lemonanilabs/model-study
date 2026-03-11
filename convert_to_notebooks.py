@@ -222,7 +222,9 @@ def convert_py_to_notebook(py_path):
 
 # 主程式
 if __name__ == '__main__':
-    py_files = sorted(glob.glob('phase-*/[0-9]*.py'))
+    py_files = sorted(glob.glob('phase-*/[0-9]*.py') +
+                       glob.glob('phase-*/*/[0-9]*.py') +
+                       glob.glob('phase-*/*/*/[0-9]*.py'))
     print(f"找到 {len(py_files)} 個 .py 檔案\n")
 
     for py_file in py_files:
