@@ -16,3 +16,8 @@
 | 順序 | 檔案 | 主題 |
 |------|------|------|
 | 5 | `llm/03_finetuning_lora.py` | 微調技術：Full FT → LoRA → QLoRA |
+
+## Diffusion
+| 順序 | 檔案 | 主題 |
+|------|------|------|
+| 6 | `diffusion/01_diffusion_models.py` | 擴散模型：DDPM / 噪聲排程 / 去噪網路 / Stable Diffusion |
