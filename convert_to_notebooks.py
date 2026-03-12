@@ -6,6 +6,7 @@ import json
 import re
 import glob
 import os
+import uuid
 
 
 def make_cell(cell_type, source):
@@ -24,15 +25,19 @@ def make_cell(cell_type, source):
     if not src:
         return None
 
+    cell_id = str(uuid.uuid4())[:8]
+
     if cell_type == 'markdown':
         return {
             "cell_type": "markdown",
+            "id": cell_id,
             "metadata": {},
             "source": src
         }
     else:
         return {
             "cell_type": "code",
+            "id": cell_id,
             "execution_count": None,
             "metadata": {},
             "outputs": [],
@@ -132,6 +137,8 @@ def section_to_cells(section_lines):
         remaining.pop()
 
     if remaining:
+        # 在 notebook 中: plt.close() → plt.show()，讓圖表內嵌顯示
+        remaining = [line.replace('plt.close()', 'plt.show()') for line in remaining]
         cells.append(make_cell('code', '\n'.join(remaining)))
 
     return [c for c in cells if c is not None]
@@ -181,7 +188,13 @@ def convert_py_to_notebook(py_path):
     while import_lines and import_lines[0].strip() == '':
         import_lines.pop(0)
 
+    # 檢查是否使用 matplotlib
+    has_matplotlib = any('matplotlib' in line for line in import_lines)
+
     if import_lines:
+        # 在 import cell 開頭加上 %matplotlib inline
+        if has_matplotlib:
+            import_lines.insert(0, '%matplotlib inline')
         cells.append(make_cell('code', '\n'.join(import_lines)))
 
     # 3. 按 # ==== 切段落
