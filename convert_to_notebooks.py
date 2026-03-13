@@ -192,9 +192,10 @@ def convert_py_to_notebook(py_path):
     has_matplotlib = any('matplotlib' in line for line in import_lines)
 
     if import_lines:
-        # 在 import cell 開頭加上 %matplotlib inline
+        # 在 import cell 開頭加上 %matplotlib inline 和抑制警告
         if has_matplotlib:
             import_lines.insert(0, '%matplotlib inline')
+            import_lines.insert(0, 'import warnings; warnings.filterwarnings("ignore")')
         cells.append(make_cell('code', '\n'.join(import_lines)))
 
     # 3. 按 # ==== 切段落
