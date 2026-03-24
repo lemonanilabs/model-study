@@ -14,6 +14,7 @@
 | 5 | `05_svm.py` | 支持向量機：理解「邊界」的概念 |
 | 6 | `06_unsupervised.py` | 非監督式學習：KMeans + PCA |
 | 7 | `07_model_evaluation.py` | 模型評估：指標、交叉驗證、Bias-Variance |
+| 8 | `08_feature_engineering.py` | 特徵工程：轉換策略與幾何直覺 |
 
 ## 學習方式
 

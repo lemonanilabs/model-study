@@ -15,6 +15,7 @@
 | 6 | `06_loss_and_optimizers.py` | 損失函數 + 優化器原理與比較 |
 | 7 | `07_training_loop.py` | 完整訓練流程：MNIST 手寫辨識 |
 | 8 | `08_techniques.py` | 實用技巧：BatchNorm / Dropout / LR Schedule |
+| 9 | `09_representation_learning.py` | 表示學習：嵌入空間、度量學習、Triplet Loss |
 
 ## 學習路線
 
@@ -32,4 +33,6 @@
 07 完整訓練 MNIST（整合所有概念）
       ↓
 08 進階技巧（讓模型訓練得更好）
+      ↓
+09 表示學習（理解模型如何學會「看世界」）
 ```
